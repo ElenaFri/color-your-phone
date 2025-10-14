@@ -7,7 +7,8 @@ import {
   Alert,
   ImageBackground,
   TextInput,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './styles';
@@ -182,10 +183,10 @@ export default function App() {
               {colorPalette.colors.map((color: string, index: number) => {
                 // Positions ajustées pour centrer sur les cailloux
                 const positions = [
-                  { top: '48%', left: '10%' },  // Caillou 1 - bien positionné
-                  { top: '58%', left: '80%' },  // Caillou 2 - encore plus droite et un chouïa bas
+                  { top: '53%', left: '13%' },  // Caillou 1 - descendu et légèrement décalé droite
+                  { top: '62%', left: '85%' },  // Caillou 2 - décalé encore plus à droite et descendu
                   { top: '75%', left: '22%' },  // Caillou 3 - décalé gauche et bas
-                  { top: '45%', left: '60%' },  // Caillou 4 - remis comme avant
+                  { top: '50%', left: '70%' },  // Caillou 4 - décalé un peu vers la gauche
                   { top: '72%', left: '70%' },  // Caillou 5 - bas à droite descendu
                   { top: '50%', left: '15%' },  // Caillou bord gauche
                   { top: '60%', left: '50%' },  // Caillou centre-bas
@@ -193,21 +194,57 @@ export default function App() {
                 ];
                 const position = positions[index % positions.length];
 
+                // Rotations variées pour chaque splash
+                const rotations = ['15deg', '-20deg', '25deg', '-10deg', '30deg', '-25deg', '20deg', '-15deg'];
+                const rotation = rotations[index % rotations.length];
+
+                // Formes d'étoiles de mer avec centre + bras
+                const starfishConfigs = [
+                  { armCount: 7, armLength: 20, armWidth: 12 },
+                  { armCount: 7, armLength: 18, armWidth: 10 },
+                  { armCount: 7, armLength: 25, armWidth: 15 },
+                  { armCount: 7, armLength: 22, armWidth: 8 },
+                  { armCount: 7, armLength: 16, armWidth: 14 },
+                ];
+
+                const config = starfishConfigs[index % starfishConfigs.length];
+
                 return (
                   <View
                     key={index}
                     style={[
-                      styles.colorSpot,
                       {
-                        backgroundColor: color,
-                      },
-                      {
+                        position: 'absolute',
                         top: position.top,
                         left: position.left,
+                        transform: [{ rotate: rotation }],
                       } as any
                     ]}
                   >
-                    <Text style={styles.colorSpotText}>{color}</Text>
+                    {/* Étoile utilisant l'image star.png avec la couleur générée */}
+                    <Image
+                      source={require('./assets/star.png')}
+                      style={{
+                        width: 80,
+                        height: 80,
+                        position: 'absolute',
+                        left: -40,
+                        top: -40,
+                        tintColor: color,
+                      }}
+                      resizeMode="contain"
+                    />
+
+                    {/* Texte de la couleur au centre */}
+                    <Text style={[styles.colorSpotText, {
+                      position: 'absolute',
+                      left: -35,
+                      top: -8,
+                      width: 70,
+                      textAlign: 'center'
+                    }]}>
+                      {color}
+                    </Text>
                   </View>
                 );
               })}
