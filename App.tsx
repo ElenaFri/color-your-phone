@@ -66,10 +66,34 @@ export default function App() {
         }, 2000);
       }
     } catch (error) {
-      // En cas d'erreur, générer une palette factice
-      console.error('Erreur API ColorMagic:', error);
+      // En cas d'erreur, générer une palette basée sur le mot-clé
+      console.log('API ColorMagic indisponible, utilisation d\'une palette générée');
+
+      // Palettes prédéfinies basées sur des mots-clés
+      const keywordPalettes: { [key: string]: string[] } = {
+        'océan': ['#006994', '#13A5DC', '#67C3CC', '#A8E6CF', '#B8F2E6'],
+        'forêt': ['#2D5016', '#5D8233', '#8FBC8F', '#C8E6C9', '#E8F5E8'],
+        'coucher': ['#FF6B35', '#F7931E', '#FFB347', '#FFCCCB', '#FFE5B4'],
+        'nuit': ['#1A1A2E', '#16213E', '#533483', '#7209B7', '#A663CC'],
+        'printemps': ['#8EC5A6', '#B4E197', '#C8E6C9', '#F8BBD9', '#FFEAA7'],
+        'automne': ['#8B4513', '#CD853F', '#DEB887', '#F4A460', '#FFE4B5'],
+        'tropical': ['#FF6B9D', '#C44569', '#F8B500', '#F4D03F', '#82E0AA'],
+        'default': ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8']
+      };
+
+      // Chercher une palette basée sur le mot-clé
+      let selectedPalette = keywordPalettes['default'];
+      const input = userInput.toLowerCase();
+
+      for (const [keyword, palette] of Object.entries(keywordPalettes)) {
+        if (input.includes(keyword)) {
+          selectedPalette = palette;
+          break;
+        }
+      }
+
       const fallbackPalette = {
-        colors: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8'],
+        colors: selectedPalette,
         name: userInput
       };
       setColorPalette(fallbackPalette);
@@ -234,7 +258,6 @@ export default function App() {
                       }}
                       resizeMode="contain"
                     />
-
                     {/* Texte de la couleur au centre */}
                     <Text style={[styles.colorSpotText, {
                       position: 'absolute',
