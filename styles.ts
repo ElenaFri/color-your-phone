@@ -9,12 +9,22 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
     },
+    darkOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        zIndex: 1,
+    },
     header: {
         paddingTop: 15,
         paddingBottom: 15,
         paddingHorizontal: 20,
         backgroundColor: 'rgba(33, 150, 243, 0.9)',
         alignItems: 'center',
+        zIndex: 2,
     },
     title: {
         fontSize: 24,
@@ -28,9 +38,11 @@ export const styles = StyleSheet.create({
     },
     scrollView: {
         flex: 1,
+        zIndex: 2,
     },
     scrollContent: {
         padding: 20,
+        zIndex: 2,
     },
     button: {
         backgroundColor: 'rgba(33, 150, 243, 0.9)',
@@ -150,6 +162,13 @@ export const styles = StyleSheet.create({
         marginBottom: 15,
         color: '#333',
     },
+    paletteInfo: {
+        fontSize: 14,
+        color: '#666',
+        textAlign: 'center',
+        marginTop: 10,
+        fontStyle: 'italic',
+    },
     colorsRow: {
         flexDirection: 'row',
         flexWrap: 'wrap',
@@ -219,5 +238,68 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
+    },
+    // Styles pour les tâches de couleurs dispersées
+    colorSpotsOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        pointerEvents: 'none', // Permet de cliquer à travers
+        zIndex: 3,
+    },
+    colorSpot: {
+        position: 'absolute',
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.7,
+        shadowRadius: 3,
+        elevation: 5,
+        borderWidth: 2,
+        borderColor: 'rgba(255, 255, 255, 0.6)',
+    },
+    colorSpotText: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: 'white',
+        textShadowColor: 'rgba(0, 0, 0, 0.8)',
+        textShadowOffset: { width: -1, height: 1 },
+        textShadowRadius: 3,
+        textAlign: 'center',
+    },
+    // Indicateur de statut en bas
+    statusIndicator: {
+        position: 'absolute',
+        bottom: 20,
+        left: 20,
+        right: 20,
+        backgroundColor: 'rgba(33, 150, 243, 0.7)',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 3,
+        zIndex: 4,
+    },
+    statusText: {
+        color: 'white',
+        fontSize: 13,
+        fontWeight: '500',
     },
 });
