@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
+import {
+  StyleSheet,
+  Text,
+  View,
   SafeAreaView,
   TouchableOpacity,
-  Alert
+  Alert,
+  ImageBackground
 } from 'react-native';
 
 export default function App() {
@@ -30,52 +31,56 @@ export default function App() {
 
   const modifySystemSettings = () => {
     Alert.alert(
-      'Réglages système', 
+      'Réglages système',
       'Fonctionnalité à implémenter pour modifier les réglages Android'
     );
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="dark" />
-      
-      <View style={styles.header}>
-        <Text style={styles.title}>Color Your Phone</Text>
-        <Text style={styles.subtitle}>Application système Android</Text>
-      </View>
+      <ImageBackground
+        source={require('./assets/wallpaper.jpg')}
+        style={styles.backgroundImage}
+        resizeMode="cover"
+      >
+        <StatusBar style="light" />
 
-      <View style={styles.content}>
-        <TouchableOpacity 
-          style={styles.button} 
-          onPress={fetchApiData}
-          disabled={isLoading}
-        >
-          <Text style={styles.buttonText}>
-            {isLoading ? 'Chargement...' : 'Consulter l API'}
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={styles.button} 
-          onPress={modifySystemSettings}
-        >
-          <Text style={styles.buttonText}>
-            Modifier les réglages
-          </Text>
-        </TouchableOpacity>
-
-        {apiData && (
-          <View style={styles.dataContainer}>
-            <Text style={styles.dataTitle}>Données reçues :</Text>
-            <Text style={styles.dataText}>
-              ID: {apiData.id}
+        <View style={styles.header}>
+          <Text style={styles.title}>Color Your Phone</Text>
+          <Text style={styles.subtitle}>Application système Android</Text>
+        </View>      <View style={styles.content}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={fetchApiData}
+            disabled={isLoading}
+          >
+            <Text style={styles.buttonText}>
+              {isLoading ? 'Chargement...' : 'Consulter l API'}
             </Text>
-            <Text style={styles.dataText}>
-              Titre: {apiData.title}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={modifySystemSettings}
+          >
+            <Text style={styles.buttonText}>
+              Modifier les réglages
             </Text>
-          </View>
-        )}
-      </View>
+          </TouchableOpacity>
+
+          {apiData && (
+            <View style={styles.dataContainer}>
+              <Text style={styles.dataTitle}>Données reçues :</Text>
+              <Text style={styles.dataText}>
+                ID: {apiData.id}
+              </Text>
+              <Text style={styles.dataText}>
+                Titre: {apiData.title}
+              </Text>
+            </View>
+          )}
+        </View>
+      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -83,11 +88,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+  },
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
   },
   header: {
     padding: 20,
-    backgroundColor: '#2196F3',
+    backgroundColor: 'rgba(33, 150, 243, 0.9)',
     alignItems: 'center',
   },
   title: {
@@ -106,11 +115,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    backgroundColor: '#2196F3',
+    backgroundColor: 'rgba(33, 150, 243, 0.9)',
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 12,
     marginVertical: 10,
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   buttonText: {
     color: 'white',
@@ -120,9 +137,16 @@ const styles = StyleSheet.create({
   dataContainer: {
     marginTop: 20,
     padding: 15,
-    backgroundColor: 'white',
-    borderRadius: 8,
-    elevation: 2,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   dataTitle: {
     fontSize: 16,
