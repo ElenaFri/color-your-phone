@@ -1,0 +1,62 @@
+{
+    {
+        "expo": {
+            "expo": {
+                "name": "Color Your Phone",
+                "name": "Color Your Phone",
+                "slug": "color-your-phone",
+                "slug": "color-your-phone",
+                "version": "1.0.0",
+                "version": "1.0.0",
+                "orientation": "portrait",
+                "orientation": "portrait",
+                "icon": "./assets/icon.png",
+                "icon": "./assets/icon.png",
+                "userInterfaceStyle": "light",
+                "userInterfaceStyle": "light",
+                "splash": {
+                    "splash": {
+                        "image": "./assets/splash.png",
+                        "image": "./assets/splash.png",
+                        "resizeMode": "contain",
+                        "resizeMode": "contain",
+                        "backgroundColor": "#ffffff""backgroundColor": "#ffffff"
+                    },
+                },
+                "assetBundlePatterns": [
+                    "assetBundlePatterns": [
+                        "**/*""**/*"
+                    ],
+                ],
+                "android": {
+                    "android": {
+                        "adaptiveIcon": {
+                            "adaptiveIcon": {
+                                "foregroundImage": "./assets/adaptive-icon.png",
+                                "foregroundImage": "./assets/adaptive-icon.png",
+                                "backgroundColor": "#FFFFFF""backgroundColor": "#FFFFFF"
+                            },
+                        },
+                        "package": "com.colorphone.app",
+                        "package": "com.colorphone.app",
+                        "permissions": [
+                            "permissions": [
+                                "WRITE_SETTINGS",
+                                "WRITE_SETTINGS",
+                                "CHANGE_CONFIGURATION",
+                                "CHANGE_CONFIGURATION",
+                                "ACCESS_NETWORK_STATE",
+                                "ACCESS_NETWORK_STATE",
+                                "INTERNET""INTERNET"
+                            ]
+                        ]
+                    },
+                },
+                "platforms": [
+                    "android"
+                ]        "platforms": [
+            }            "android"
+        }
+    ]
+}
+}
