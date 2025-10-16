@@ -207,31 +207,20 @@ export default function App() {
               {colorPalette.colors.map((color: string, index: number) => {
                 // Positions ajustées pour centrer sur les cailloux
                 const positions = [
-                  { top: '53%', left: '13%' },  // Caillou 1 - descendu et légèrement décalé droite
-                  { top: '62%', left: '85%' },  // Caillou 2 - décalé encore plus à droite et descendu
-                  { top: '75%', left: '22%' },  // Caillou 3 - décalé gauche et bas
-                  { top: '50%', left: '70%' },  // Caillou 4 - décalé un peu vers la gauche
-                  { top: '72%', left: '70%' },  // Caillou 5 - bas à droite descendu
-                  { top: '50%', left: '15%' },  // Caillou bord gauche
-                  { top: '60%', left: '50%' },  // Caillou centre-bas
-                  { top: '75%', left: '55%' },  // Caillou bas-centre
+                  { top: '52%', left: '11%' },
+                  { top: '61%', left: '85%' },
+                  { top: '75%', left: '29%' },
+                  { top: '50%', left: '65%' },
+                  { top: '73%', left: '70%' },
+                  { top: '50%', left: '15%' },
+                  { top: '60%', left: '50%' },
+                  { top: '75%', left: '55%' },
                 ];
                 const position = positions[index % positions.length];
 
                 // Rotations variées pour chaque splash
-                const rotations = ['15deg', '-20deg', '25deg', '-10deg', '30deg', '-25deg', '20deg', '-15deg'];
+                const rotations = ['15deg', '-20deg', '25deg', '-5deg', '0deg', '-25deg', '20deg', '-15deg'];
                 const rotation = rotations[index % rotations.length];
-
-                // Formes d'étoiles de mer avec centre + bras
-                const starfishConfigs = [
-                  { armCount: 7, armLength: 20, armWidth: 12 },
-                  { armCount: 7, armLength: 18, armWidth: 10 },
-                  { armCount: 7, armLength: 25, armWidth: 15 },
-                  { armCount: 7, armLength: 22, armWidth: 8 },
-                  { armCount: 7, armLength: 16, armWidth: 14 },
-                ];
-
-                const config = starfishConfigs[index % starfishConfigs.length];
 
                 return (
                   <View
@@ -249,8 +238,8 @@ export default function App() {
                     <Image
                       source={require('./assets/star.png')}
                       style={{
-                        width: 80,
-                        height: 80,
+                        width: 100,
+                        height: 100,
                         position: 'absolute',
                         left: -40,
                         top: -40,
@@ -261,8 +250,8 @@ export default function App() {
                     {/* Texte de la couleur au centre */}
                     <Text style={[styles.colorSpotText, {
                       position: 'absolute',
-                      left: -35,
-                      top: -8,
+                      left: -24,
+                      top: 5,
                       width: 70,
                       textAlign: 'center'
                     }]}>
